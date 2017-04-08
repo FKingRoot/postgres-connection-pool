@@ -7,6 +7,7 @@ see example usage in test_pool.py
 
 """
 
+import os
 from contextlib import contextmanager
 
 import psycopg2.pool
@@ -15,13 +16,13 @@ import psycopg2.extras
 
 POOL = None
 CONF = {
-    "db.poolmin": "3",
-    "db.poolmax": "10",
-    "db.host": "localhost",
-    "db.port": "5432",
-    "db.name": "t1",
-    "db.user": "t1",
-    "db.password": "fNfwREMqO69TB9YqE+/OzF5/k+s=",
+    "db.poolmin": os.getenv('DBPOOLMIN', "3"),
+    "db.poolmax": os.getenv('DBPOOLMAX', "10"),
+    "db.host": os.getenv('PGHOST', "localhost"),
+    "db.port": os.getenv('PGPORT', "5432"),
+    "db.name": os.getenv('PGDATABASE', "t1"),
+    "db.user": os.getenv('PGUSER', "t1"),
+    "db.password": os.getenv('PGPASSWORD', "fNfwREMqO69TB9YqE+/OzF5/k+s="),
 }
 
 
