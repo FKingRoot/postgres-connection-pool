@@ -30,10 +30,10 @@ def _get_pool():
     global POOL
     if not POOL:
         POOL = psycopg2.pool.ThreadedConnectionPool(
-            int(CONF.get("db.poolmin", 3)),
-            int(CONF.get("db.poolmax", 10)),
-            host=CONF.get("db.host", "localhost"),
-            port=int(CONF.get("db.port", "5432")),
+            int(CONF.get("db.poolmin")),
+            int(CONF.get("db.poolmax")),
+            host=CONF.get("db.host"),
+            port=int(CONF.get("db.port")),
             database=CONF.get("db.name"),
             user=CONF.get("db.user"),
             password=CONF.get("db.password"))
